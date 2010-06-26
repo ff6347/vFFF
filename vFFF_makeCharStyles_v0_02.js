@@ -217,7 +217,7 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 
 //				pointSize = 5.5;
 //				leading = 9;
-//				appliedFont = myFontSemiBoldItal;
+				appliedFont = myFontItal;
 				
 //				baselineShift  = "2.5pt";
 //				
@@ -259,7 +259,7 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 
 //				pointSize = 5.5;
 //				leading = 9;
-//				appliedFont = myFontSemiBoldItal;
+				appliedFont = myFontSemiBold;
 				
 //				baselineShift  = "2.5pt";
 //				
@@ -302,7 +302,7 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 //				pointSize = 7;
 //				leading = 10;
 				tracking = 75;
-				appliedFont = myFontItal;
+//				appliedFont = myFontItal;
 //				kerningMethod : "Metrics";
 				capitalization = Capitalization.ALL_CAPS;
 //				position = Position.NORMAL; // The text position relative to the baseline.

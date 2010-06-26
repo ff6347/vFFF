@@ -142,6 +142,32 @@ function findH3(myDocument) {
     app.changeGrepPreferences = NothingEnum.nothing;
     //</fragment>
 }
+
+function findSTRONG(myDocument) {
+			 //Clear the find/change grep preferences.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //Set the find options.
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    //Regular expression for finding
+    app.findGrepPreferences.findWhat = "<strong>(.*?)</strong>";
+	//app.changeGrepPreferences.fillTint = 50;
+	app.changeGrepPreferences.appliedCharacterStyle = myDocument.characterStyles.item("semibold");
+	app.changeGrepPreferences.changeTo = "$1";
+
+    //Apply the change to 24-point text only.
+    //app.findGrepPreferences.pointSize = 24;
+    //app.changeGrepPreferences.underline = true;
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //</fragment>
+}
 function findEM(myDocument) {
 			 //Clear the find/change grep preferences.
     app.findGrepPreferences = NothingEnum.nothing;
@@ -167,6 +193,52 @@ function findEM(myDocument) {
     app.changeGrepPreferences = NothingEnum.nothing;
     //</fragment>
 }
+
+function findUL(myDocument) {
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    app.findGrepPreferences.findWhat = "<ul>(.*?)</ul>";
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Inhaltsverzeichnis");
+	app.changeGrepPreferences.changeTo = "$1";
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+	
+	
+	// find multiline blockquote
+	app.findGrepPreferences.findWhat = "<ul>~b*?(.*?)~b*?</ul>";
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Inhaltsverzeichnis");
+	app.changeGrepPreferences.changeTo = "$1";
+	myDocument.changeGrep();
+	app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+}
+
+function findLI(myDocument) {
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    app.findGrepPreferences.findWhat = "<li>(.*?)</li>";
+	app.changeGrepPreferences.appliedCharacterStyle = myDocument.characterStyles.item("versal");
+	app.changeGrepPreferences.changeTo = "$1";
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+	
+
+}
+
 function findQUOTE(myDocument) {
     app.findGrepPreferences = NothingEnum.nothing;
     app.changeGrepPreferences = NothingEnum.nothing;
@@ -191,7 +263,6 @@ function findQUOTE(myDocument) {
 	myDocument.changeGrep();
 	app.findGrepPreferences = NothingEnum.nothing;
     app.changeGrepPreferences = NothingEnum.nothing;
-
 }
 function findIMG(myDocument) {
     app.findGrepPreferences = NothingEnum.nothing;

@@ -53,6 +53,9 @@ function main() {
 	findH1(myDocument);
 	findH2(myDocument);
 	findH3(myDocument);
+	findSTRONG(myDocument);
+	findUL(myDocument);
+	findLI(myDocument);
 	findEM(myDocument);
 	findQUOTE(myDocument);
 	findIMG(myDocument);
