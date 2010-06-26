@@ -112,7 +112,7 @@ function makeAttributes(myDocument){
 }
 function placeByAttribute(myDocument) {
 		
-		myPage = myDocument.pages.add();
+		var myPage = myDocument.pages.lastItem();
 		 var myTextFrame = myPage.textFrames.add({
 			geometricBounds: myGetBounds(myDocument, myPage)
 		});

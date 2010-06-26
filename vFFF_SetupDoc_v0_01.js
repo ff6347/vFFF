@@ -30,7 +30,7 @@ function setupDoc() {
 			baselineStart = "23.3mm";
 			baselineGridShown = true;
 		}
-	var myPage = myDocument.pages.add();
+//	var myPage = myDocument.pages.add();
 	var myFontReg = app.fonts.item("Skolar	Regular");
 	var myFontBold = app.fonts.item("Skolar	Bold");
 
