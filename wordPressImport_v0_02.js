@@ -1,5 +1,6 @@
 /**
  * @author fabianmoronzirfas
+ * find the code @ http://github.com/fabiantheblind/vFFF
  */
 
 //You must copy the file "glue code.jsx" from the XML Rules folder (inside the Scripts
