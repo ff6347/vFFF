@@ -2,7 +2,7 @@
  * This is set of JavaScripts for InDesign CS4
  * written for the FFF (Verlag für Form Forschung).
  * All code is under CC license http://creativecommons.org/licenses/by/2.0/
- * the "main()"method is in wordPressImport_v0_02.js
+ * the function main() is in wordPressImport_v0_02.js
  * the package includes also these following files:
  * vFFF_findChange_v0_01.js
  * vFFF_makeCharStyles_v0_02.js
@@ -44,6 +44,7 @@
  * the Adobe InDesign Scripting Forum
  * 
  * @author fabiantheblind 2010 07 05 
+ * @todo fis the try catch for the paragraph and characterstyles in function main() 
  * @todo fix the one Tag Problem
  * @todo maybee use The Title instead
  * @todo import Images from the web or 
