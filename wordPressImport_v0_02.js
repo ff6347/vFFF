@@ -1,6 +1,56 @@
 /**
- * @author fabianmoronzirfas
+ * This is set of JavaScripts for InDesign CS4
+ * written for the FFF (Verlag für Form Forschung).
+ * All code is under CC license http://creativecommons.org/licenses/by/2.0/
+ * the "main()"method is in wordPressImport_v0_02.js
+ * the package includes also these following files:
+ * vFFF_findChange_v0_01.js
+ * vFFF_makeCharStyles_v0_02.js
+ * vFFF_makeColors_v0_01.js
+ * vFFF_makeParStyles_v0_02.js
+ * vFFF_SetupDoc_v0_01.js
+ *\/metaScripts\/glue code.jsx
+ *\/xml\/wordpress_Example.xml
+ *
+ *
+ * the pre-conditions to run this script are as follows
+ * install Adobe InDesign CS4
+ * place the whole package in the folder ~/Adobe InDesign CS4/Scripts/Script Panel/
+ * set the Fonts in the script vFFF_SetupDoc_v*_**.js (right now it is line 34 and following)
+ * 	var myFontReg = app.fonts.item("Your Font Regular");
+ * 	var myFontBold = app.fonts.item("Your Font Bold");
+ * 	var myFontItal = app.fonts.item("Your Font	Italic");
+ * 	var myFontSemiBold = app.fonts.item("Your Font	SemiBold");
+ * 	var myFontSemiBoldItal = app.fonts.item("Your Font	SemiBold Italic");
+ * 
+ * to a font that is on your machine.
+ * 
+ * Go to your wordpress (if you don't have it install it) and export an authors Posts as .xml
+ * save the .xml on your machine (there is an example .xml provided with the code wordpress_Example.xml)
+ * If you work wit you own wordpress:
+ * the Script can only handle post with 1 Tag. Not 2 or 3 just one. This will be fixed or changed soon
+ * 
+ * you have now your .xml
+ * Goto InDesign CS4 and run the script wordPressImport_v0_02.js from the Scripts Panel
+ * 
+ * See what happens!
+ * 
+ * if you have some problems contact me at github.com
+ * 
  * find the code @ http://github.com/fabiantheblind/vFFF
+ * 
+ * thanx to hilfdirselbst.ch Skriptwerkstatt Forum
+ * and
+ * the Adobe InDesign Scripting Forum
+ * 
+ * @author fabiantheblind 2010 07 05 
+ * @todo fix the one Tag Problem
+ * @todo maybee use The Title instead
+ * @todo import Images from the web or 
+ * @todo handel linebreak in GREP Expressions for InDesign
+ * @todo add an Index Script (the Basics are already there)
+ * @todo make a documatation
+ * @todo beta test it. with help by O.O.
  */
 
 //You must copy the file "glue code.jsx" from the XML Rules folder (inside the Scripts
