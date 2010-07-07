@@ -118,7 +118,11 @@ function main() {
 	
 }
 
-
+/**
+ * 
+ * @param myDocument
+ * @returns nothing directly but the xml gets imported into InDesign
+ */
 function importXml(myDocument) {
 	myXMLImportPreferences = myDocument.xmlImportPreferences;
     myXMLImportPreferences.allowTransform = false;
@@ -140,7 +144,12 @@ function importXml(myDocument) {
         exit();
     }
 }
-
+/**
+ * 
+ * @param myDocument app.activeDocument
+ * @param myRoot the Root level of the InDesign xmlElemtents
+ * @returns
+ */
 function cleanUpXml(myDocument,myRoot) {
 	
 	myDocument.xmlComments.everyItem().remove();
@@ -156,15 +165,26 @@ for (var i=myDocument.xmlElements.item("rss").xmlElements.item("channel").xmlEle
 
 }
 
+/**
+ * 
+ * @param myDocument
+ * @returns makes attributes from the first Tag
+ * @todo fix that and use the Titel instead makes a lot of stuff easier i think
+ */
 function makeAttributes(myDocument){
 
-	var myRuleSet = new Array(new FindAttributeDomain());
+	var myRuleSet = new Array(new FindAttributeTitle());
 	with(myDocument){
 	var elements = xmlElements;
 	__processRuleSet(elements.everyItem(), myRuleSet);
 	}
 
 }
+/**
+ * this gehts the data from the conc
+ * @param myDocument
+ * @returns
+ */
 function placeByAttribute(myDocument) {
 		
 		var myPage = myDocument.pages.lastItem();
@@ -227,14 +247,25 @@ function FindAttributeDomain(){
 	this.name = "FindAttribute";
 	this.xpath = "/rss/item/category[@domain = 'tag']||[@nicename]";
 	this.apply = function(myElement, myRuleProcessor){
-		//myElement.xmlAttributes.item("domain").remove();
-		myElement.parent.xmlAttributes.add("id", myElement.texts.item(0).contents);
-		//	alert("Yes I found it");
-
-		return true;
-	}
+			//myElement.xmlAttributes.item("domain").remove();
+			myElement.parent.xmlAttributes.add("id", myElement.texts.item(0).contents);
+			//	alert("Yes I found it");
+			return true;
+			}
 
 }
+function FindAttributeTitle(){
+	this.name = "FindAttribute";
+	this.xpath = "/rss/item/title";//[@domain = 'tag']||[@nicename]
+	this.apply = function(myElement, myRuleProcessor){
+			//myElement.xmlAttributes.item("domain").remove();
+			myElement.parent.xmlAttributes.add("id", myElement.texts.item(0).contents);
+			//	alert("Yes I found it");
+			return true;
+			}
+
+}
+
 
 function FindAndPalceText(myTextFrame){
 	var myInputString = myDialogUI();
@@ -397,7 +428,12 @@ try {
 }
 	
 
-
+/**
+ * 
+ * @param myDocument
+ * @param myPage
+ * @returns the geomatricBounds of the pages raster
+ */
 function myGetBounds(myDocument, myPage){
 	var myPageWidth = myDocument.documentPreferences.pageWidth;
 	var myPageHeight = myDocument.documentPreferences.pageHeight
@@ -414,43 +450,31 @@ function myGetBounds(myDocument, myPage){
 	var myY2 = myPageHeight - myPage.marginPreferences.bottom;
 	return [myY1, myX1, myY2, myX2];
 }
-
+/**
+ * the pulldown dialog to choose the text to place from
+ * 
+ * @returns
+ */
 function myDialogUI(){
-	
 	var myList = app.activeDocument.xmlElements.item("rss").xmlElements.everyItem().xmlAttributes.item("id").value;
-	
-	var myDialog = app.dialogs.add({
-		name: "User Interface Example Script",
-		canCancel: true
-	});
-	with (myDialog) {
+	var myDialog = app.dialogs.add({name: "CHOOSE THE TEXT TO PLACE",canCancel: true});
+with (myDialog){
 		//Add a dialog column.
-		with (dialogColumns.add()) {
+		with (dialogColumns.add()){
 			//Create a border panel.
-			with (borderPanels.add()) {
-				with (dialogColumns.add()) {
+			with (borderPanels.add()){
+				with (dialogColumns.add()){
 					//The following line shows how to set a property as you create an object.
-					staticTexts.add({
-						staticLabel: "Message:"
-					});
+					staticTexts.add({staticLabel: "Use Text Tagged With:"});
 				}
-				
-				//with (dialogColumns.add()) {
-					//The following line shows how to set multiple properties as you create an object.
-					//var myTextEditField = textEditboxes.add({
-					//	editContents: "Write tag you want to place!",
-					//	minWidth: 180
-					//});
-				//}
-			with(dialogColumns.add()){
-			var myDropDown = dropdowns.add({
-				stringList:myList,
-				//selectedIndex:0
+
+				with(dialogColumns.add()){
+				var myDropDown = dropdowns.add({
+					stringList:myList
+					//selectedIndex:0
 			});	
 				
-				
-			}
-			
+				}
 			}
 		}
 		if (myDialog.show() == true) {
@@ -459,9 +483,8 @@ function myDialogUI(){
 			myTag = myList[myDropDown.selectedIndex];
 			myDialog.destroy();
 			return myTag;
-		}
-		else {
-			myDialog.destroy()
+		}else {
+			myDialog.destroy();
 		}
 	}
 }
