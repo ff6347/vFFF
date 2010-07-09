@@ -1,4 +1,18 @@
 /**
+ * This is set of JavaScripts for InDesign CS4
+ * written for the FFF (Verlag für Form Forschung).
+ * All code is under CC licensehttp://creativecommons.org/licenses/by/3.0/
+ * the function main() is in wordPressImport_v0_02.js
+ * the package includes also these following files:
+ * vFFF_findChange_v0_01.js
+ * vFFF_makeCharStyles_v0_02.js
+ * vFFF_makeColors_v0_01.js
+ * vFFF_makeParStyles_v0_02.js
+ * vFFF_SetupDoc_v0_01.js
+ *\/metaScripts\/glue code.jsx
+ *\/xml\/wordpress_Example.xml
+ * @author fabiantheblind
+ *
  * @author fabianmoronzirfas
  * based on RecordFindChange_cs3-cs5.js
  * from http://www.hilfdirselbst.ch

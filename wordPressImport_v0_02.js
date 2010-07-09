@@ -1,7 +1,7 @@
 /**
  * This is set of JavaScripts for InDesign CS4
  * written for the FFF (Verlag für Form Forschung).
- * All code is under CC license http://creativecommons.org/licenses/by/2.0/
+ * All code is under CC licensehttp://creativecommons.org/licenses/by/3.0/
  * the function main() is in wordPressImport_v0_02.js
  * the package includes also these following files:
  * vFFF_findChange_v0_01.js

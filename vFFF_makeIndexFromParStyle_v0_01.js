@@ -1,11 +1,23 @@
-/*
-	Marking up index words from colours
-	Version: 1.1
-	
-    Script by Thomas Silkjær
-	http://indesigning.net/
-*/
 
+/**
+ * 
+ * Marking up index words from colours
+ * Version: 1.1
+ * Script by Thomas Silkjær
+ * http://indesigning.net/
+ * added to the set for the FFF (Verlag f�r Form Forschung).
+ * All code is under CC licensehttp://creativecommons.org/licenses/by/3.0/
+ * the function main() is in wordPressImport_v0_02.js
+ * the package includes also these following files:
+ * vFFF_findChange_v0_01.js
+ * vFFF_makeCharStyles_v0_02.js
+ * vFFF_makeColors_v0_01.js
+ * vFFF_makeParStyles_v0_02.js
+ * vFFF_SetupDoc_v0_01.js
+ *\/metaScripts\/glue code.jsx
+ *\/xml\/wordpress_Example.xml
+ *
+ */
 var my_document = app.documents.item(0);
 	
 // Create a list of swatches
