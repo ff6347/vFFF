@@ -88,20 +88,29 @@ function main() {
 	var myResult = mySetupDialog.show();
 	//If the user clicked OK, display one message;
 	if(myResult == true){
+		// this creates a new document
 		myDocument = setupDoc();
 	}else{
+		// this checks for the right setup in the doc to run all functions
 		myDocument = getSetup();
 	}
 	//Remove the dialog box from memory.
 	mySetupDialog.destroy();
 
+	
 	importXml(myDocument);
+	// the xml is a bit messy for our purpouse
+	// this cleans out the unneeded elements
 	cleanUpXml(myDocument,myRoot);
 	//getArticleNumber();
 	makeAttributes(myDocument);
+	
 	var myFrame = placeByAttribute(myDocument);
+	// apply the basic paragraph style
 	myFrame.parentStory.appliedParagraphStyle = myDocument.paragraphStyles.item("Body_Text");
+	//this cleans out some syling stuff from the html
 	findStyleMeta(myDocument);
+	// this parses the html to our paragraph and character styles
 	findH1(myDocument);
 	findH2(myDocument);
 	findH3(myDocument);
@@ -111,7 +120,8 @@ function main() {
 	findEM(myDocument);
 	findQUOTE(myDocument);
 	findIMG(myDocument);
-	findCMT(myDocument);	
+	findCMT(myDocument);
+	//this gets rid of the overflow
 	DumbRunPages(myDocument,myFrame.parentStory);
 	myFrame.associatedXMLElement.untag();
 	myDocument.xmlElements.item(0).remove();
