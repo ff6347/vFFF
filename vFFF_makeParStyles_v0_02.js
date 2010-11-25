@@ -18,7 +18,10 @@ app.scriptPreferences.version = 6 ;
 function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 	 	var myName;
 		var Kapitelueberschrift,Body_Text ,Inhaltsverzeichnis ,Zitate ,Ueberschrift ,Autorennamen ,Fussnoten, Pagina, Bildunterschriften, Impressum;
-	
+		var myFillColor = myDocument.swatches.item("Black"); // Schwarz/Black
+		var myStrokeColor =  myDocument.swatches.item("None");
+		
+		
 			try{
 		    	Kapitelueberschrift = myDocument.paragraphStyles.item("Kapitelueberschrift");
 		    	//If the paragraph style does not exist, trying to get its name will generate an error.
@@ -83,11 +86,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myDocument.swatches.item("Black"); // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myDocument.swatches.item("None");
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -161,11 +164,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -240,11 +243,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -321,11 +324,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -402,11 +405,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -482,11 +485,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -585,11 +588,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -676,11 +679,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -756,11 +759,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -860,11 +863,11 @@ function makeParStyles_v02(myDocument,myFontReg, myFontItal, myFontSemiBold) {
 //				dropCapStyle = myDocument.charcterStyles.item(0);
 //				nestedStyles = 0; // A collection of nested styles
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				

@@ -19,9 +19,8 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 	
 		var myName;
 		var ZITAT_Namen, Inhaltsverzeichnis_Pagina, Fussnoten_unten, Fussnoten_oben, BUs_kursiv, semibold, versal;
-
-
-
+		var myFillColor = myDocument.swatches.item("Black"); // Schwarz/Black
+		var myStrokeColor =  myDocument.swatches.item("None");
 	
 	
 	
@@ -48,11 +47,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 				appliedLanguage : "de_DE_2006";
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -86,11 +85,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 				appliedLanguage : "de_DE_2006";
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -124,11 +123,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 				appliedLanguage : "de_DE_2006";
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -165,11 +164,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 				appliedLanguage : "de_DE_2006";
 
-				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+				fillColor = myFillColor; // Schwarz/Black
 				fillTint  = 100; 
 				overprintFill = false;
 				strokeWeight = "1pt";
-				strokeColor =  myDocument.swatches.item(0);
+				strokeColor =  myStrokeColor;
 				strokeTint = 100;
 				overprintStroke  = false;
 				
@@ -207,11 +206,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 //				appliedLanguage : "de_DE_2006";
 //
-//				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+//				fillColor = myFillColor; // Schwarz/Black
 //				fillTint  = 100; 
 //				overprintFill = false;
 //				strokeWeight = "1pt";
-//				strokeColor =  myDocument.swatches.item(0);
+//				strokeColor =  myStrokeColor;
 //				strokeTint = 100;
 //				overprintStroke  = false;
 //				
@@ -249,11 +248,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 //				appliedLanguage : "de_DE_2006";
 //
-//				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+//				fillColor = myFillColor; // Schwarz/Black
 //				fillTint  = 100; 
 //				overprintFill = false;
 //				strokeWeight = "1pt";
-//				strokeColor =  myDocument.swatches.item(0);
+//				strokeColor =  myStrokeColor;
 //				strokeTint = 100;
 //				overprintStroke  = false;
 //				
@@ -288,11 +287,11 @@ function makeCharStyles_v02(myDocument,myFontReg,myFontBold, myFontItal, myFontS
 				
 //				appliedLanguage : "de_DE_2006";
 //
-//				fillColor = myDocument.swatches.item(2); // Schwarz/Black
+//				fillColor = myFillColor; // Schwarz/Black
 //				fillTint  = 100; 
 //				overprintFill = false;
 //				strokeWeight = "1pt";
-//				strokeColor =  myDocument.swatches.item(0);
+//				strokeColor =  myStrokeColor;
 //				strokeTint = 100;
 //				overprintStroke  = false;
 //				
