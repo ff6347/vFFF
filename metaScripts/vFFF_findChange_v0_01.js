@@ -91,7 +91,14 @@ function findH1(myDocument) {
     //Regular expression for finding
     app.findGrepPreferences.findWhat = "<h1>(.*?)</h1>";
 	//app.changeGrepPreferences.fillTint = 50;
+	try{
 	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Kapitelueberschrift");
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h1");
+	
+	} catch(e){
+		
+		
+	}
 	app.changeGrepPreferences.changeTo = "$1";
 
     //Apply the change to 24-point text only.
@@ -117,7 +124,13 @@ function findH2(myDocument) {
     //Regular expression for finding
     app.findGrepPreferences.findWhat = "<h2>(.*?)</h2>";
 	//app.changeGrepPreferences.fillTint = 50;
+	try{
 	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Ueberschrift");
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h2");
+	}catch(e){
+		
+		
+	}
 	app.changeGrepPreferences.changeTo = "$1";
 
     //Apply the change to 24-point text only.
@@ -142,7 +155,7 @@ function findH3(myDocument) {
     //Regular expression for finding
     app.findGrepPreferences.findWhat = "<h3>(.*?)</h3>";
 	//app.changeGrepPreferences.fillTint = 50;
-	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Ueberschrift");
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h3");
 	app.changeGrepPreferences.changeTo = "$1";
 
     //Apply the change to 24-point text only.
@@ -260,7 +273,7 @@ function findQUOTE(myDocument) {
     app.findChangeGrepOptions.includeLockedStoriesForFind = false;
     app.findChangeGrepOptions.includeMasterPages = false;
     app.findGrepPreferences.findWhat = "<blockquote>(.*?)</blockquote>";
-	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Zitate");
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("quote");
 	app.changeGrepPreferences.changeTo = "$1";
     myDocument.changeGrep();
     //Clear the find/change preferences after the search.
@@ -270,7 +283,7 @@ function findQUOTE(myDocument) {
 	
 	// find multiline blockquote
 	app.findGrepPreferences.findWhat = "<blockquote>~b*?(.*?)~b*?</blockquote>";
-	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Zitate");
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("quote");
 	app.changeGrepPreferences.changeTo = "$1";
 	myDocument.changeGrep();
 	app.findGrepPreferences = NothingEnum.nothing;

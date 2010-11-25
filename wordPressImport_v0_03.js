@@ -2,7 +2,7 @@
  * This is set of JavaScripts for InDesign CS4 / CS5
  * written for the FFF (Verlag für Form Forschung).
  * All code is under CC licensehttp://creativecommons.org/licenses/by/3.0/
- * the function main() is in wordPressImport_v0_02.js
+ * the function main() is in wordPressImport_v0_03.js
  * the package includes also these following files:
  * vFFF_findChange_v0_01.js
  * vFFF_makeCharStyles_v0_02.js
@@ -14,7 +14,7 @@
  *
  *
  * the pre-conditions to run this script are as follows
- * install Adobe InDesign CS4 CS5
+ * install Adobe InDesign CS4 / CS5
  * place the whole package in the folder ~/Adobe InDesign CS4/Scripts/Script Panel/
  * set the Fonts in the script vFFF_SetupDoc_v*_**.js (right now it is line 34 and following)
  * 	var myFontReg = app.fonts.item("Your Font Regular");
@@ -83,6 +83,9 @@ function main() {
 	var myColor1, myColor2;
 	var myRoot;
 	var myCharacterStyle01, myCharacterStyle02;
+	//this is for making the textFrames like the pages margins
+	var likeColumns = false;
+	
 
 	var mySetupDialog = app.dialogs.add({name:"Setup Dialog"});
 	//Add a dialog column.
@@ -110,9 +113,10 @@ function main() {
 	//getArticleNumber();
 	makeAttributes(myDocument);
 	
-	var myFrame = placeByAttribute(myDocument);
+	
+	var myFrame = placeByAttribute(myDocument,likeColumns);
 	// apply the basic paragraph style
-	myFrame.parentStory.appliedParagraphStyle = myDocument.paragraphStyles.item("Body_Text");
+	myFrame.parentStory.appliedParagraphStyle = myDocument.paragraphStyles.item("body");
 	//this cleans out some syling stuff from the html
 	findStyleMeta(myDocument);
 	// this parses the html to our paragraph and character styles
@@ -127,7 +131,7 @@ function main() {
 	findIMG(myDocument);
 	findCMT(myDocument);
 	//this gets rid of the overflow
-	DumbRunPages(myDocument,myFrame.parentStory);
+	DumbRunPages(myDocument,myFrame.parentStory,likeColumns);
 	
 	myFrame.associatedXMLElement.untag();
 	//this comes from 
@@ -203,12 +207,17 @@ function makeAttributes(myDocument){
  * @param myDocument
  * @returns
  */
-function placeByAttribute(myDocument) {
+function placeByAttribute(myDocument,likeColumns) {
 		
 		var myPage = myDocument.pages.lastItem();
 		 var myTextFrame = myPage.textFrames.add({
 			geometricBounds: myGetBounds(myDocument, myPage)
 		});
+		if(likeColumns==true){
+			myTextFrame.textFramePreferences.textColumnCount = myPage.marginPreferences.columnCount;   
+			myTextFrame.textFramePreferences.textColumnGutter = myPage.marginPreferences.columnGutter; 
+			}
+			
 		var myRuleSet = new Array(new FindAndPalceText(myTextFrame));
 		with(myDocument){
 			var elements = xmlElements;
@@ -217,7 +226,7 @@ function placeByAttribute(myDocument) {
 	return myTextFrame;
 }
 
-function DumbRunPages(myDocument, theStory) {   
+function DumbRunPages(myDocument, theStory,likeColumns) {   
 	// What makes this "dumb" is that default master pages are used.   
 	//var uRuler = theDoc.viewPreferences.rulerOrigin;   
 	//theDoc.viewPreferences.rulerOrigin = RulerOrigin.spreadOrigin;   
@@ -251,8 +260,10 @@ function DumbRunPages(myDocument, theStory) {
 		//}   
 		myNewTF.itemLayer = theStory.textContainers[theStory.textContainers.length-1].itemLayer;   
 		myNewTF.previousTextFrame = theStory.textContainers[theStory.textContainers.length-1];   
+	if(likeColumns==true){
 		myNewTF.textFramePreferences.textColumnCount = backPage.marginPreferences.columnCount;   
-		myNewTF.textFramePreferences.textColumnGutter = backPage.marginPreferences.columnGutter;   
+		myNewTF.textFramePreferences.textColumnGutter = backPage.marginPreferences.columnGutter; 
+		}  
 		if (myNewTF.characters.length == 0){   
 			//theDoc.viewPreferences.rulerOrigin = uRuler;   
 			alert("Permanently overset"); // This indicates a permanent overset condition so break out of loop   
