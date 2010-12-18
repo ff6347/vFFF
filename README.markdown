@@ -1,7 +1,7 @@
 This is an InDesign JavaScript Project for importing XML
-=======================================================
-The Script set in the folder "slim" and the prvided XML in folder "xml" is all you need
------------------------------------------------------------------------------------
+=============
+The script set in the folder "slim" and the prvided XML in folder "xml" is all you need
+------------
 
 
 **Sat Dec 18 16:42:55 CET 2010** made some big housekeeping
@@ -17,9 +17,3 @@ added folder slim. This conains now a reduced but working version
 This is an autopuplishing project by fabiantheblind
 go [here->](http://scripts.sil.org/cms/scripts/page.php?item_id=Gentium_download)
 to get the Gentium font
-
-
-
-
-
-
