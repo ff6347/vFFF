@@ -1,10 +1,14 @@
-Thu Nov 25 2010
+**Thu Nov 25 2010
 This is an autopuplishing project by fabiantheblind
 go to:
 http://scripts.sil.org/cms/scripts/page.php?item_id=Gentium_download
 to get the Gentium font
 
-Thu Nov 25 16:43:44 CET 2010 InDesign CS 5 Tested - works
-Thu Nov 25 17:38:05 CET 2010 Worpress 3.0.1 Tested - Has new Filterfunctions for export and works
+**Thu Nov 25 16:43:44 CET 2010 InDesign CS 5 Tested - works
+**Thu Nov 25 17:38:05 CET 2010 Worpress 3.0.1 Tested - Has new Filterfunctions for export and works
 
-Sa 18 Dez 2010 10:39:17 CET Set up some more html tags
+**Sa 18 Dez 2010 10:39:17 CET Set up some more html tags
+**Sat Dec 18 16:42:55 CET 2010 made some big housekeeping
+moved old and the whole formatting stuff to extended
+added folder slim. This conains now a reduced but working version
+
