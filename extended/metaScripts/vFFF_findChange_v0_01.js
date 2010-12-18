@@ -91,14 +91,14 @@ function findH1(myDocument) {
     //Regular expression for finding
     app.findGrepPreferences.findWhat = "<h1>(.*?)</h1>";
 	//app.changeGrepPreferences.fillTint = 50;
-	try{
-	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Kapitelueberschrift");
+//	try{
+//	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Kapitelueberschrift");
 	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h1");
 	
-	} catch(e){
+//	} catch(e){
 		
 		
-	}
+//	}
 	app.changeGrepPreferences.changeTo = "$1";
 
     //Apply the change to 24-point text only.
@@ -124,13 +124,13 @@ function findH2(myDocument) {
     //Regular expression for finding
     app.findGrepPreferences.findWhat = "<h2>(.*?)</h2>";
 	//app.changeGrepPreferences.fillTint = 50;
-	try{
-	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Ueberschrift");
+//	try{
+//	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("Ueberschrift");
 	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h2");
-	}catch(e){
+//	}catch(e){
 		
 		
-	}
+//	}
 	app.changeGrepPreferences.changeTo = "$1";
 
     //Apply the change to 24-point text only.
@@ -167,6 +167,85 @@ function findH3(myDocument) {
     app.changeGrepPreferences = NothingEnum.nothing;
     //</fragment>
 }
+
+function findH4(myDocument) {
+			 //Clear the find/change grep preferences.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //Set the find options.
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    //Regular expression for finding
+    app.findGrepPreferences.findWhat = "<h4>(.*?)</h4>";
+	//app.changeGrepPreferences.fillTint = 50;
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h4");
+	app.changeGrepPreferences.changeTo = "$1";
+
+    //Apply the change to 24-point text only.
+    //app.findGrepPreferences.pointSize = 24;
+    //app.changeGrepPreferences.underline = true;
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //</fragment>
+}
+function findH5(myDocument) {
+			 //Clear the find/change grep preferences.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //Set the find options.
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    //Regular expression for finding
+    app.findGrepPreferences.findWhat = "<h5>(.*?)</h5>";
+	//app.changeGrepPreferences.fillTint = 50;
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h5");
+	app.changeGrepPreferences.changeTo = "$1";
+
+    //Apply the change to 24-point text only.
+    //app.findGrepPreferences.pointSize = 24;
+    //app.changeGrepPreferences.underline = true;
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //</fragment>
+}
+
+function findH6(myDocument) {
+			 //Clear the find/change grep preferences.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //Set the find options.
+    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeHiddenLayers = false;
+    app.findChangeGrepOptions.includeLockedLayersForFind = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
+    app.findChangeGrepOptions.includeMasterPages = false;
+    //Regular expression for finding
+    app.findGrepPreferences.findWhat = "<h6>(.*?)</h6>";
+	//app.changeGrepPreferences.fillTint = 50;
+	app.changeGrepPreferences.appliedParagraphStyle = myDocument.paragraphStyles.item("h6");
+	app.changeGrepPreferences.changeTo = "$1";
+
+    //Apply the change to 24-point text only.
+    //app.findGrepPreferences.pointSize = 24;
+    //app.changeGrepPreferences.underline = true;
+    myDocument.changeGrep();
+    //Clear the find/change preferences after the search.
+    app.findGrepPreferences = NothingEnum.nothing;
+    app.changeGrepPreferences = NothingEnum.nothing;
+    //</fragment>
+}
+
+
 
 function findSTRONG(myDocument) {
 			 //Clear the find/change grep preferences.
