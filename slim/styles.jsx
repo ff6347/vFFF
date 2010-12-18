@@ -63,9 +63,25 @@ basicCharStyles[8] = "img";
 		catch (myError){
 		    	//The paragraph style did not exist, so create it.
 		    	ps = theDoc.characterStyles.add({name:basicCharStyles[i]})
-		with(ps){
-		}
+			with(ps){
+			}
 		}
 	}
+	
 
+		var ul = "underline";
+		var cs;
+		var aName;
+		try{
+		    	cs = theDoc.characterStyles.item(ul);
+		    	//If the paragraph style does not exist, trying to get its name will generate an error.
+		    	aName = cs.name;
+		    }
+		catch (myError){
+		    	//The paragraph style did not exist, so create it.
+		    	cs = theDoc.characterStyles.add({name:ul})
+			with(cs){
+			basedOn = theDoc.characterStyles.item("ul")
+			}
+		}
 }

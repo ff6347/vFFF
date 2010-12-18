@@ -1,4 +1,4 @@
-
+#include "toArabic.jsx";
 function setFCopt(){
 	
 	emptyFC();
@@ -18,7 +18,65 @@ function emptyFC(){
 
 	
 }
+
+function findNotes(doc){
+	setFCopt();
+	
+	var grp = new Array();
+	grp[0] = "<a href=\"#sdendnote(\\d+?)anc\">(.*?)</a>";
+	grp[1] = "<a href=\"#sdendnote(\\d+?)sym\"><sup>(.*?)</sup></a>";
+	grp[2] = "<a href=\"#sdfootnote(\\d+?)anc\">(.*?)</a>";
+	grp[3] = "<a href=\"#sdfootnote(\\d+?)sym\"><sup>(.*?)</sup></a>";
+	// this is housekeeping
+	grp[4] = "<sup>";
+	grp[5] = "</sup>";
+	
+	
+	
+	for(var i = 0; i<grp.length; i++ ){
+		app.findGrepPreferences.findWhat = grp[i];
+		app.changeGrepPreferences.appliedCharacterStyle = doc.characterStyles.item( "endnote" );
+		
+		if(i < 1){
+			app.changeGrepPreferences.changeTo = "[$1]~m";
+		}else if(i > 1 && i < 4 ){
+			app.changeGrepPreferences.changeTo = "$1~m";
+			} else if(i > 3) {
+			// we will clear empty spaces aout later
+			app.changeGrepPreferences.changeTo = " ";
+	
+			}
+		
+		doc.changeGrep();
+		emptyFC();
+	}
+	
+	
+}
+
+
+function takeOutTheTrash(doc){
+	
+	var findGrepPref  = app.findGrepPreferences;
+	var chngGrepPref = app.changeGrepPreferences;
+	setFCopt();
+	emptyFC();
+	
+	// this is housekeeping
+	var greps = new Array();
+	greps[0] = "</span>";
+	
+	for(var i = 0;i < greps.length;i++){
+		findGrepPref.findWhat = greps[i];
+		chngGrepPref.changeTo = "";
+		doc.changeGrep();
+		emptyFC();
+	}
+	emptyFC();
+}
 function findStyleMeta(doc) {
+	var findGrepPref  = app.findGrepPreferences;
+	var chngGrepPref = app.changeGrepPreferences;
 	setFCopt();
 	// this is housekeeping
 	var greps = new Array();
@@ -32,14 +90,14 @@ function findStyleMeta(doc) {
 	
 	emptyFC();
 	for(var i = 0;i < greps.length;i++){
-		app.findGrepPreferences.findWhat = greps[i];
-		app.changeGrepPreferences.changeTo = "";
+		findGrepPref.findWhat = greps[i];
+		chngGrepPref.changeTo = "";
 		doc.changeGrep();
 		emptyFC();
 	}
 	emptyFC();
 	//finally make the h1 work
-	app.findGrepPreferences.findWhat = "<h1 >";
+	findGrepPref.findWhat = "<h1 >";
 	chngGrepPref.changeTo = "<h1>";
 	doc.changeGrep();
 	emptyFC();
@@ -101,6 +159,13 @@ function findTags(doc) {
 	// ul mulitline
 	findGrepPref.findWhat = "<ul>~b*?(.*?)~b*?</ul>";
 	chngGrepPref.appliedCharacterStyle = doc.characterStyles.item("ul");
+	chngGrepPref.changeTo = "$1";
+	doc.changeGrep();
+	emptyFC();
+	
+	// underline
+	findGrepPref.findWhat = "<span style=\"text-decoration: underline\">(.*?)</span>"; 
+	chngGrepPref.appliedCharacterStyle = doc.characterStyles.item("underline");
 	chngGrepPref.changeTo = "$1";
 	doc.changeGrep();
 	emptyFC();
