@@ -34,8 +34,8 @@ function setupDoc() {
 	}
 		with (doc.gridPreferences) {
 			//setup the masterGrid
-			baselineDivision = "11.936Pt";
-			baselineStart = "23.3mm";
+			baselineDivision = "17Pt";
+			baselineStart = "40mm";
 			baselineGridShown = true;
 		}
 		

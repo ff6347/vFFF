@@ -1,4 +1,5 @@
-function buildStyles(theDoc){
+#include "chooseFont.jsx";
+function buildStyles(doc){
 	
 	//H1,H2,H3,H4,H5,H6,footnote,endnote,body;
 var  basicParStyles = new Array();
@@ -26,26 +27,26 @@ basicCharStyles[5] = "footnote";
 basicCharStyles[6] = "endnote";
 basicCharStyles[7] = "ul";
 basicCharStyles[8] = "img";
+basicCharStyles[9] = "footnote_inText";
+basicCharStyles[10] = "endnote_inText";
 
-
-
-
-
+// see "chooseFont.jsx";
+var theFont = chooseFont();
 
 	for(var i = 0; i < basicParStyles.length;i++){
 	
 		var ps;
 		var aName;
 		try{
-		    	ps = theDoc.paragraphStyles.item(basicParStyles[i]);
+		    	ps = doc.paragraphStyles.item(basicParStyles[i]);
 		    	//If the paragraph style does not exist, trying to get its name will generate an error.
 		    	aName = ps.name;
 		    }
 		catch (myError){
 		    	//The paragraph style did not exist, so create it.
-		    	ps = theDoc.paragraphStyles.add({name:basicParStyles[i]})
+		    	ps = doc.paragraphStyles.add({name:basicParStyles[i]})
 			with(ps){
-			
+			appliedFont  = theFont
 			}
 		}
 	}
@@ -56,32 +57,45 @@ basicCharStyles[8] = "img";
 		var ps;
 		var aName;
 		try{
-		    	ps = theDoc.characterStyles.item(basicCharStyles[i]);
+		    	ps = doc.characterStyles.item(basicCharStyles[i]);
 		    	//If the paragraph style does not exist, trying to get its name will generate an error.
 		    	aName = ps.name;
 		    }
 		catch (myError){
 		    	//The paragraph style did not exist, so create it.
-		    	ps = theDoc.characterStyles.add({name:basicCharStyles[i]})
+		    	ps = doc.characterStyles.add({name:basicCharStyles[i]})
 			with(ps){
+				appliedFont  = theFont
+			
 			}
 		}
 	}
 	
-
+	
+	
+	// this is some manual tweak
 		var ul = "underline";
 		var cs;
 		var aName;
 		try{
-		    	cs = theDoc.characterStyles.item(ul);
+		    	cs = doc.characterStyles.item(ul);
 		    	//If the paragraph style does not exist, trying to get its name will generate an error.
 		    	aName = cs.name;
 		    }
 		catch (myError){
 		    	//The paragraph style did not exist, so create it.
-		    	cs = theDoc.characterStyles.add({name:ul})
+		    	cs = doc.characterStyles.add({name:ul})
 			with(cs){
-			basedOn = theDoc.characterStyles.item("ul")
+			basedOn = doc.characterStyles.item("ul")
 			}
 		}
+		
+		var quote = doc.paragraphStyles.item("quote");
+		var body = doc.paragraphStyles.item("body")
+		quote.basedOn = body;
+		body.alignToBaseline = true;
+		body.pointSize = 13;
+		body.leading = doc.gridPreferences.baselineDivision;
+	
+		
 }

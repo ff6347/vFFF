@@ -21,7 +21,8 @@ function emptyFC(){
 
 function findNotes(doc){
 	setFCopt();
-	
+	var findGrepPref  = app.findGrepPreferences;
+	var chngGrepPref = app.changeGrepPreferences;
 	var grp = new Array();
 	grp[0] = "<a href=\"#sdendnote(\\d+?)anc\">(.*?)</a>";
 	grp[1] = "<a href=\"#sdendnote(\\d+?)sym\"><sup>(.*?)</sup></a>";
@@ -34,22 +35,44 @@ function findNotes(doc){
 	
 	
 	for(var i = 0; i<grp.length; i++ ){
-		app.findGrepPreferences.findWhat = grp[i];
-		app.changeGrepPreferences.appliedCharacterStyle = doc.characterStyles.item( "endnote" );
-		
+		findGrepPref.findWhat = grp[i];
 		if(i < 1){
-			app.changeGrepPreferences.changeTo = "[$1]~m";
+			chngGrepPref.changeTo = "[$1]";
+			chngGrepPref.appliedCharacterStyle = doc.characterStyles.item( "endnote" );
+			
 		}else if(i > 1 && i < 4 ){
-			app.changeGrepPreferences.changeTo = "$1~m";
+			//use the asterix to identify them later
+			chngGrepPref.changeTo = "*$1*";
+			chngGrepPref.appliedCharacterStyle = doc.characterStyles.item( "footnote" );
+			
 			} else if(i > 3) {
 			// we will clear empty spaces aout later
-			app.changeGrepPreferences.changeTo = " ";
+			chngGrepPref.changeTo = " ";
 	
 			}
 		
 		doc.changeGrep();
 		emptyFC();
 	}
+	//something like the following whould be nice
+	// at this time you have to sort out the stuff in the text and the stuff at the end
+	//manually bäh
+	/*	
+	grp1 = "(\[\\d+?\])";
+	findGrepPref.appliedCharacterStyle = doc.characterStyles.item( "endnote" );
+	chngGrepPref.appliedCharacterStyle = doc.characterStyles.item("endnote_inText");
+	chngGrepPref.changeTo = "$1";
+	doc.changeGrep();
+	emptyFC();
+	
+
+	grp1 = "*(\\d+?)*";
+	findGrepPref.appliedCharacterStyle = doc.characterStyles.item( "footnote" );
+	chngGrepPref.appliedCharacterStyle = doc.characterStyles.item( "footnote_inText" );
+	chngGrepPref.changeTo = "$1";
+	doc.changeGrep();
+	emptyFC();
+	*/
 	
 	
 }
@@ -59,20 +82,61 @@ function takeOutTheTrash(doc){
 	
 	var findGrepPref  = app.findGrepPreferences;
 	var chngGrepPref = app.changeGrepPreferences;
+	var findTextPref  = app.findTextPreferences;
+	var chngTextPref = app.changeTextPreferences;
 	setFCopt();
 	emptyFC();
 	
 	// this is housekeeping
-	var greps = new Array();
-	greps[0] = "</span>";
+	var strings = new Array();
+	strings[0] = "</span>";
+	strings[1] = "<span>";
+	strings[2] = "<ol>";
+	strings[3] = "</ol>";
+	strings[4] = "<li>";
+	strings[5] = "</li>";
+	strings[6] = "\t";
 	
+	
+	
+	for(var i = 0;i < strings.length;i++){
+		findTextPref.findWhat = strings[i];
+		chngTextPref.changeTo = "";
+		doc.changeText();
+		emptyFC();
+	}
+	emptyFC();
+	
+	
+	var greps = new Array();
+	greps[0] = "  +";// 	Find all double spaces and replace with single spaces.
+	greps[1] = "\r ";// 	Find all returns followed by a space And replace with single returns.
+	greps[2] = " \r";// 	Find all returns followed by a space and replace with single returns.
+	greps[3] = "\t\t+";// 	Find all double tab characters and replace with single tab characters.
+	greps[4] = "\r\t";// 	Find all returns followed by a tab character and replace with single returns.
+	greps[5] = "\t\r";// 	Find all returns followed by a tab character and replace with single returns.
+	greps[6] = "\r\r+";// 	Find all double returns and replace with single returns.
+	
+	var changeTos = new Array();
+	changeTos[0] = " ";
+	changeTos[1] = "\r";
+	changeTos[2] = "\r";
+	changeTos[3] = "\t";
+	changeTos[4] = "\r";
+	changeTos[5] = "\r";
+	changeTos[6] = "\r";
+	
+	
+	emptyFC();
 	for(var i = 0;i < greps.length;i++){
 		findGrepPref.findWhat = greps[i];
-		chngGrepPref.changeTo = "";
+		chngGrepPref.changeTo = changeTos[i];
 		doc.changeGrep();
 		emptyFC();
 	}
 	emptyFC();
+	
+
 }
 function findStyleMeta(doc) {
 	var findGrepPref  = app.findGrepPreferences;

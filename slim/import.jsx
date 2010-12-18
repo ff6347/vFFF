@@ -47,11 +47,11 @@ function main(){
 	findTags(doc);
 	//this is experimental
 	//findIMG(doc);
-	DumbRunPages(doc,theFrame.parentStory,likeColumns);
 	findNotes(doc);
 	
 	//this should be the last find/change
 	takeOutTheTrash(doc);
+	DumbRunPages(doc,theFrame.parentStory,likeColumns);
 	theFrame.associatedXMLElement.untag();
 	//this comes from 
 	//untagAllxmlElements(doc);
