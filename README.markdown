@@ -1,6 +1,6 @@
 This is an InDesign JavaScript Project for importing XML
 =======================================================
-The Script set in the folder slim and the prvided XML in folder xml is all you need
+The Script set in the folder "slim" and the prvided XML in folder "xml" is all you need
 -----------------------------------------------------------------------------------
 
 
