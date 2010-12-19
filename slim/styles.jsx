@@ -12,8 +12,11 @@ basicParStyles[5] = "h6";
 basicParStyles[6] = "body";
 basicParStyles[7] = "footnote";
 basicParStyles[8] = "endnote";
-basicParStyles[9] = "pagina";
-basicParStyles[10] = "quote";
+basicParStyles[9] = "quote";
+basicParStyles[10] = "pagina";
+basicParStyles[11] = "pagina_Left";
+basicParStyles[12] = "pagina_Right";
+
 
 
 
@@ -92,10 +95,18 @@ var theFont = chooseFont();
 		
 		var quote = doc.paragraphStyles.item("quote");
 		var body = doc.paragraphStyles.item("body")
+		var pagina = doc.paragraphStyles.item("pagina");
+		var pagina_L = doc.paragraphStyles.item("pagina_Left");
+		var pagina_R = doc.paragraphStyles.item("pagina_Right");
+		
+		
 		quote.basedOn = body;
 		body.alignToBaseline = true;
 		body.pointSize = 13;
-		body.leading = doc.gridPreferences.baselineDivision;
-	
+		body.leading = body.pointSize *1.5;
+		pagina_L.basedOn = pagina;
+		pagina_R.basedOn = pagina;
+		pagina_L.justification = Justification.LEFT_ALIGN;
+		pagina_R.justification = Justification.RIGHT_ALIGN;
 		
 }

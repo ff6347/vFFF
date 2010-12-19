@@ -2,6 +2,14 @@ This is an InDesign JavaScript Project for importing XML
 =============
 The script set in the folder "slim" and the prvided XML in folder "xml" is all you need
 ------------
+This is more playground than enything else
+------------
+
+**Sun Dec 19 11:11:46 CET 2010** realised that this is not the way to get data into InDesign.
+A real html parser would be usefull instead of the findChange.jsx
+Watch out for moreTime4design == mehrZeitZumGestalten
+
+**Sat Dec 18 21:33:02 CET 2010** the blockqote tag is making bad stuff
 
 
 **Sat Dec 18 16:42:55 CET 2010** made some big housekeeping

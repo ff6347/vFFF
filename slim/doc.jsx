@@ -5,10 +5,10 @@ function setupDoc() {
 	var pH = "297mm";
 	var pW =  "210";
 	var theBleed = "3mm";
-	var theMarginLeft = "25mm";
+	var theMarginLeft = "30mm";
 	var theMarginTop = "25mm";
 	var theMarginRight = "25mm";
-	var theMarginBottom = "35mm";
+	var theMarginBottom = "25mm";
 	var theColumnCount = 3;
 	var theColumnGutter = "4mm";
 
@@ -34,8 +34,8 @@ function setupDoc() {
 	}
 		with (doc.gridPreferences) {
 			//setup the masterGrid
-			baselineDivision = "17Pt";
-			baselineStart = "40mm";
+			baselineDivision = "19.5pt";
+			baselineStart = theMarginTop;
 			baselineGridShown = true;
 		}
 		
@@ -56,9 +56,9 @@ function setupDoc() {
 		
 		var w = doc.documentPreferences.pageWidth;
 		var h = doc.documentPreferences.pageHeight;
-		var y1 = h - ms1.pages.item(0).marginPreferences.bottom;//ms1.pages.item(0).marginPreferences.top;
+		var y1 = h - ms1.pages.item(0).marginPreferences.bottom +7.88;
 		var x1 = ms1.pages.item(0).marginPreferences.right;
-		var y2 = h - ms1.pages.item(0).marginPreferences.bottom + 10;
+		var y2 = y1 + doc.gridPreferences.baselineDivision;
 		var x2 = w - ms1.pages.item(0).marginPreferences.left;
 
 		var paginaLeft = ms1.pages.item(0).textFrames.add({geometricBounds:[y1,x1,y2,x2]})
@@ -67,7 +67,7 @@ function setupDoc() {
                 contents = SpecialCharacters.emSpace;
                 contents = SpecialCharacters.autoPageNumber;
         }	
-		paginaLeft.paragraphs.everyItem().appliedParagraphStyle = doc.paragraphStyles.item("pagina");
+		paginaLeft.paragraphs.everyItem().appliedParagraphStyle = doc.paragraphStyles.item("pagina_Left");
 
 		var ms1right = ms1.pages.item(1)
 		with(ms1right.marginPreferences){
@@ -78,9 +78,9 @@ function setupDoc() {
 			columnCount = theColumnCount;
 			columnGutter = theColumnGutter;
 		}
-		 y1 = h - ms1.pages.item(0).marginPreferences.bottom;//ms1.pages.item(0).marginPreferences.top;
+		 y1 = h - ms1.pages.item(0).marginPreferences.bottom + 7.88;
 		 x1 = ms1.pages.item(0).marginPreferences.left;
-		 y2 = h - ms1.pages.item(0).marginPreferences.bottom + 10;
+		 y2 = y1 + doc.gridPreferences.baselineDivision;
 		 x2 = w - ms1.pages.item(0).marginPreferences.right;
 		
 		var paginaRight = ms1.pages.item(1).textFrames.add({geometricBounds:[y1,x1,y2,x2]})
@@ -89,7 +89,7 @@ function setupDoc() {
                 contents = SpecialCharacters.emSpace;
                 contents = SpecialCharacters.autoPageNumber;
         }
-		paginaRight.paragraphs.everyItem().appliedParagraphStyle = doc.paragraphStyles.item("pagina");
+		paginaRight.paragraphs.everyItem().appliedParagraphStyle = doc.paragraphStyles.item("pagina_Right");
 
 		var ms2 = doc.masterSpreads.add()//doc.masterSpreads.item(1);
 				with(ms2.pages.item(0).marginPreferences){

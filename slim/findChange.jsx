@@ -96,6 +96,12 @@ function takeOutTheTrash(doc){
 	strings[4] = "<li>";
 	strings[5] = "</li>";
 	strings[6] = "\t";
+	strings[7] = "<cite>";
+	strings[8] = "</cite>";
+	strings[9] = "</ul>";
+	strings[10] = "<ul>";
+	
+	
 	
 	
 	
@@ -186,7 +192,7 @@ function findTags(doc) {
 	
 		findGrepPref.findWhat = "<"+ easyTagToPS[i] + ">(.*?)</" + easyTagToPS[i] + ">";
 		chngGrepPref.appliedParagraphStyle = doc.paragraphStyles.item( easyTagToPS[i] );
-		chngGrepPref.appliedCharacterStyle = doc.characterStyles.item( 0 );
+		chngGrepPref.appliedCharacterStyle = doc.characterStyles.item(0);
 		
 		chngGrepPref.changeTo = "$1";
 		doc.changeGrep();
@@ -208,8 +214,8 @@ function findTags(doc) {
 	var easyTagToCS = new Array();
 	easyTagToCS[0] = "strong";
 	easyTagToCS[1] = "em";
-	easyTagToCS[2] = "li";
-	easyTagToCS[3] = "ul";
+	easyTagToCS[2] = "ul";
+	//easyTagToCS[3] = "ul";
 
 	for(var i = 0; i < easyTagToCS.length; i++){
 	
