@@ -1,9 +1,70 @@
-This is an InDesign JavaScript Project for importing XML
-=============
-The script set in the folder "slim" and the prvided XML in folder "xml" is all you need
+This is an InDesign JavaScript Project for importing XML  
+=============  
+This is more playground than enything else  
 ------------
-This is more playground than enything else
-------------
+The script set in the folder "slim" and the prvided XML in folder "xml" is all you need  
+  
+  
+**How To:**  
+
+Wordpress  
+--
+
+- **Install the latest [wordpress](http://wordpress.org/download/)** follow the provided instructions  
+
+Create some Content  
+--
+
+- **Make some Posts.** They don't need to be published  
+- At this moment the following formating is supported  
+     H1  
+     H2  
+     H3  
+     H4  
+     H5  
+     H6  
+     Bold  
+     Italic  
+     Endnote  
+     Footnote  
+  
+- You can also write in openoffice or word and use the basic paragraph styles  
+- In the Post Editor within worpress you can use the option **"Paste from Word"**  
+- it is a bit hiddne feature look around  
+
+Export  
+--  
+
+- Logged in as Admin go to "Tools / Export"  
+- and export the posts of the author you want to import to InDesign  
+
+Download Scripts  
+--  
+
+- go here and download the latest version of [vFFF](http://fabiantheblind.github.com/vFFF/)  
+
+Install Scripts  
+--
+
+- place everything in the InDesign Scripts Folder following these [instructions](http://lmgtfy.com/?q=indesign+install+script)  
+
+In InDesign  
+--  
+
+- now **execute the script:** _"/vFFF/slim/import.jsx"_  
+- the script will ask to **build a doc** or use a working one  
+- then it **asks for a font** with a pulldown  
+- then it **asks for the wordpress.xml** file you downloaded  
+- within the package is a folder called "xml" there is a basic .xml file provided  
+- then it ask you to** select a post** from the xml  
+- now it runs  
+- everything that could be parsed into InDesign character and paragraph syles is parsed  
+
+
+
+LOG  
+--  
+**Thu Jan  6 20:59:27 CET 2011** added how to  
 
 **Sun Dec 19 11:11:46 CET 2010** realised that this is not the way to get data into InDesign.
 A real html parser would be usefull instead of the findChange.jsx
