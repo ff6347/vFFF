@@ -202,12 +202,12 @@ function findTags(doc) {
 	// blockqoute
 
 	
-	// blockqoute multiline
-	// findGrepPref.findWhat = "<blockquote>~b*?(.*?)~b*?</blockquote>";
-	// chngGrepPref.appliedParagraphStyle = doc.paragraphStyles.item("quote");
-	// chngGrepPref.changeTo = "$1";
-	// doc.changeGrep();
-	// emptyFC();
+	//blockqoute multiline
+	findGrepPref.findWhat = "<blockquote>~b*?(.*?)~b*?</blockquote>";
+	chngGrepPref.appliedParagraphStyle = doc.paragraphStyles.item("body");
+	chngGrepPref.changeTo = "$1";
+	doc.changeGrep();
+	emptyFC();
 	
 	// loop thru the easy char styles
 	var easyTagToCS = new Array();
