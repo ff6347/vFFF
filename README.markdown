@@ -60,10 +60,14 @@ In InDesign
 - now it runs  
 - everything that could be parsed into InDesign character and paragraph syles is parsed  
 
-
+TODO  
+--
+Create a document sampler to take par char obj styles from a existing doc
 
 LOG  
---  
+-- 
+**Mon Jan 24 14:15:16 CET 2011** added styles_editor.jsx for OO
+ 
 **Thu Jan  6 20:59:27 CET 2011** added how to  
   
 **Sun Dec 19 11:11:46 CET 2010** realised that this is not the way to get data into InDesign.  
