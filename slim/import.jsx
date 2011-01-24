@@ -11,6 +11,7 @@ function main(){
 	var col1, col2;
 	var root;
 	var cs1, cs2;
+	var append = false;
 	
 
 	
@@ -25,6 +26,7 @@ function main(){
 		// this creates a new document
 		doc = setupDoc();
 	}else{
+		append = true;
 		doc = app.activeDocument;
 		// this checks for the right setup in the doc to run all functions
 		alert("if the doc: "+ doc.name +" is not build by this script. It won't work");
@@ -40,7 +42,7 @@ function main(){
 	
 	//this is for making the textFrames like the pages margins
 	var likeColumns = false;
-	var theFrame = placeByAttribute(doc,likeColumns);
+	var theFrame = placeByAttribute(doc,likeColumns,append);
 	// apply the basic paragraph style
 	theFrame.parentStory.appliedParagraphStyle = doc.paragraphStyles.item("body");
 	findStyleMeta(doc);
@@ -143,9 +145,16 @@ function makeAttributes(doc){
 //param doc
 //returns
 //
-function placeByAttribute(doc,likeColumns) {
+function placeByAttribute(doc,likeColumns,append) {
 		
-		var p = doc.pages.lastItem();
+		var p;
+		if(append == false){
+		p = doc.pages.lastItem();
+	}else{
+		p = doc.pages.add();
+		
+		
+	}
 		 var txtFr = p.textFrames.add({
 			geometricBounds: getBounds(doc, p)
 		});
