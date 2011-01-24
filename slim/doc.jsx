@@ -1,4 +1,4 @@
-#include "styles.jsx";
+#include "styles_editor.jsx";
 
 function setupDoc() {
 	//create a new Document
