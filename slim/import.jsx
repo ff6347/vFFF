@@ -45,6 +45,7 @@ function main(){
 	var theFrame = placeByAttribute(doc,likeColumns,append);
 	// apply the basic paragraph style
 	theFrame.parentStory.appliedParagraphStyle = doc.paragraphStyles.item("body");
+	DumbRunPages(doc,theFrame.parentStory,likeColumns);
 	findStyleMeta(doc);
 	findTags(doc);
 	//this is experimental
@@ -53,7 +54,7 @@ function main(){
 	
 	//this should be the last find/change
 	takeOutTheTrash(doc);
-	DumbRunPages(doc,theFrame.parentStory,likeColumns);
+	takeOutTheTrash(doc);
 	theFrame.associatedXMLElement.untag();
 	//this comes from 
 	//untagAllxmlElements(doc);

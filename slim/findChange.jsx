@@ -2,11 +2,11 @@ function setFCopt(){
 	
 	emptyFC();
     //Set the find options.
-    app.findChangeGrepOptions.includeFootnotes = false;
+    app.findChangeGrepOptions.includeFootnotes = true;
     app.findChangeGrepOptions.includeHiddenLayers = false;
     app.findChangeGrepOptions.includeLockedLayersForFind = false;
-    app.findChangeGrepOptions.includeLockedStoriesForFind = false;
-    app.findChangeGrepOptions.includeMasterPages = false;
+    app.findChangeGrepOptions.includeLockedStoriesForFind = true;
+    app.findChangeGrepOptions.includeMasterPages = true;
 	
 }
 
@@ -78,7 +78,6 @@ function findNotes(doc){
 
 
 function takeOutTheTrash(doc){
-	
 	var findGrepPref  = app.findGrepPreferences;
 	var chngGrepPref = app.changeGrepPreferences;
 	var findTextPref  = app.findTextPreferences;
@@ -99,12 +98,35 @@ function takeOutTheTrash(doc){
 	strings[8] = "</cite>";
 	strings[9] = "</ul>";
 	strings[10] = "<ul>";
+	strings[11] = "<..>";
+	strings[12] = "<...>";
+	strings[13] = "<.>";
+	strings[14] = "</p>";
+	strings[15] = "<p>";
+	strings[16] = "<p >";
+	strings[17] = "</p >";
+	strings[18] = "style=“color: #000000;“";
+	strings[19]  = "style=“text-decoration: underline;“";
+	strings[20]  = "style=“text-decoration: underline;“";
+	strings[21]  = "style=“text-align: left;“";
+	strings[22]  = "style=“text-align: right;“";
+	strings[23]  = "style=“text-align: center;“";
+	strings[24]  = "</span >";
+	strings[25]  = "<span >";
+	
+	
+	
+
+	
+	
+	
 	
 	
 	
 	
 	
 	for(var i = 0;i < strings.length;i++){
+		setFCopt();
 		findTextPref.findWhat = strings[i];
 		chngTextPref.changeTo = "";
 		doc.changeText();
@@ -130,8 +152,6 @@ function takeOutTheTrash(doc){
 	changeTos[4] = "\r";
 	changeTos[5] = "\r";
 	changeTos[6] = "\r";
-	
-	
 	emptyFC();
 	for(var i = 0;i < greps.length;i++){
 		findGrepPref.findWhat = greps[i];
@@ -156,9 +176,11 @@ function findStyleMeta(doc) {
 	greps[4] = "<div>";
 	greps[5] = "</div>";
 	greps[6] = "<!-- (.*?) -->";
-	
+	greps[7] = 	"style=“color: #\d+;“";
+
 	emptyFC();
 	for(var i = 0;i < greps.length;i++){
+		setFCopt();
 		findGrepPref.findWhat = greps[i];
 		chngGrepPref.changeTo = "";
 		doc.changeGrep();
