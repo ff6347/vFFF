@@ -114,18 +114,18 @@ var theFont = chooseFont();
 		//*******************
 		// from here on you can edit parstyles
 		// this is editing Paragraph Style"h1"
-		editParStyleH1(basicParStyles[0]);
+		editParStyleH1();
 		
 		// this edits the character style "strong"
-		editPCharStyleStrong(basicCharStyles[0]);
+		editPCharStyleStrong();
 
 		//
 		
 }
 // tis is for paragraphStyles
-function editParStyleH1(aParstyle){
+function editParStyleH1(){
 
-	var theStyle = aParstyle;
+	var theStyle = app.activeDocument.paragraphStyles.item("h1")
 	with(theStyle){
 		pointSize = 12;
 		leading = 11.5;
@@ -196,10 +196,10 @@ function editParStyleH1(aParstyle){
 }
 
 
-function editPCharStyleStrong(aCharstyle){
+function editPCharStyleStrong(){
 	
 	
-	var theStyle = aCharstyle;
+	var theStyle =app.activeDocument.characterStyles.item("strong") 
 		with(theStyle){
 
 			pointSize = 7;
