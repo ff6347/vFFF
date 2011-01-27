@@ -146,7 +146,7 @@ function takeOutTheTrash(doc){
 	greps[3] = "\t\t+";// 	Find all double tab characters and replace with single tab characters.
 	greps[4] = "\r\t";// 	Find all returns followed by a tab character and replace with single returns.
 	greps[5] = "\t\r";// 	Find all returns followed by a tab character and replace with single returns.
-	greps[6] = "\r\r+";// 	Find all double returns and replace with single returns.
+//	greps[6] = "\r\r+";// 	Find all double returns and replace with single returns.
 //	greps[7] = "<div>";// 	Find all double returns and replace with single returns.
 	
 	var changeTos = new Array();
@@ -191,11 +191,25 @@ function findStyleMeta(doc) {
 
 	emptyFC();
 	for(var i = 0;i < greps.length;i++){
-		setFCopt();
-		findGrepPref.findWhat = greps[i];
-		chngGrepPref.changeTo = "";
-		doc.changeGrep();
-		emptyFC();
+		
+		if((i == 4) || (i == 5)){
+			
+			setFCopt();
+			emptyFC();
+			findGrepPref.findWhat = greps[i];
+			chngGrepPref.changeTo = "\n";
+			doc.changeGrep();
+			emptyFC();
+		}else{
+			setFCopt();
+			emptyFC();
+			findGrepPref.findWhat = greps[i];
+			chngGrepPref.changeTo = "";
+			doc.changeGrep();
+			emptyFC();	
+			
+		}
+
 	}
 	emptyFC();
 	//finally make the h1 work

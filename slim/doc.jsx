@@ -41,7 +41,10 @@ function setupDoc() {
 		
 		
 		buildStyles(doc);
-		
+		var fnOpt = doc.footnoteOptions;
+		fnOpt.footnoteTextStyle = doc.paragraphStyles.item("footnote");
+		fnOpt.footnoteMarkerStyle = doc.characterStyles.item("footnote_inText");
+		fnOpt.markerPositioning = FootnoteMarkerPositioning.NORMAL_MARKER;
 		
 		//setup margins and columns for the first masterpage
 		var ms1 = doc.masterSpreads.item(0)

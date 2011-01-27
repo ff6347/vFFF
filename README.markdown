@@ -48,6 +48,13 @@ Install Scripts
 
 - place everything in the InDesign Scripts Folder following these [instructions](http://lmgtfy.com/?q=indesign+install+script)  
 
+Install Find CHange Queries  
+--
+On Mac under:
+/Applications/Adobe InDesign CS4/Presets/Find-Change Queries/GREP/de_DE/  
+or  
+/Users/[YOUR USERNAME]/Library/Preferences/Adobe InDesign/Version 6.0/de_DE/Find-Change Queries/GREP/
+
 In InDesign  
 --  
 

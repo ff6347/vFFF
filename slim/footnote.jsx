@@ -24,10 +24,10 @@ var chngTXTPref = app.changeTextPreferences;
 		fn = theStory.footnotes.add(LocationOptions.BEFORE, fnParent.insertionPoints[ip]);
 		fn.texts[0].insertionPoints[-1].contents = fnText;
 		
-		for(var j = 0 ;j < fn.paragraphs.length;j++){
-			fn.paragraphs.item(j).appliedParagraphStyle = "footnote";
-			
-		}
+		// for(var j = 0 ;j < fn.paragraphs.length;j++){
+		// 		fn.paragraphs.item(j).appliedParagraphStyle = "footnote";
+		// 		
+		// 	}
 	}
 	doc.changeGrep(); 
 	// Zurücksetzen der Sucheinstellungen     
