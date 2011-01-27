@@ -34,7 +34,7 @@ basicCharStyles[9] = "footnote_inText";
 basicCharStyles[10] = "endnote_inText";
 
 // see "chooseFont.jsx";
-var theFont = chooseFont();
+	//var theFont = chooseFont();
 
 	for(var i = 0; i < basicParStyles.length;i++){
 	
@@ -49,7 +49,7 @@ var theFont = chooseFont();
 		    	//The paragraph style did not exist, so create it.
 		    	ps = doc.paragraphStyles.add({name:basicParStyles[i]})
 			with(ps){
-			appliedFont  = theFont
+			//appliedFont  = theFont
 			}
 		}
 	}
@@ -68,12 +68,12 @@ var theFont = chooseFont();
 		    	//The paragraph style did not exist, so create it.
 		    	ps = doc.characterStyles.add({name:basicCharStyles[i]})
 			with(ps){
-				appliedFont  = theFont
+			//	appliedFont  = theFont
 			
 			}
 		}
 	}
-	
+
 	
 	
 	// this is some manual tweak
@@ -106,8 +106,8 @@ var theFont = chooseFont();
 		body.leading = body.pointSize *1.5;
 		pagina_L.basedOn = pagina;
 		pagina_R.basedOn = pagina;
-		pagina_L.justification = Justification.LEFT_ALIGN;
-		pagina_R.justification = Justification.RIGHT_ALIGN;
+		pagina_L.justification = Justification.CENTER_ALIGN;
+		pagina_R.justification = Justification.CENTER_ALIGN;
 		
 		
 		
@@ -115,25 +115,250 @@ var theFont = chooseFont();
 		// from here on you can edit parstyles
 		// this is editing Paragraph Style"h1"
 		editParStyleH1();
-		
-		// this edits the character style "strong"
+		editParStyleH2();
+		editParStyleH3();
+		editParStyleH4();
+		editParStyleH5();
+		editParStyleBody();
+		editParStylePagina();
+		editParStyleFootnote();
+		editParStyleEndnote();
+	
+	// this edits the character style "strong"
 		editPCharStyleStrong();
+		editPCharStyleEm();
+		editPCharStylefootnote_inText();
+		editPCharStyleendnote_inText();
 
 		//
 		
 }
 // tis is for paragraphStyles
+//kapitelüberschrift
 function editParStyleH1(){
 
 	var theStyle = app.activeDocument.paragraphStyles.item("h1")
 	with(theStyle){
-		pointSize = 12;
+		pointSize = 9;
 		leading = 11.5;
-		tracking = 100;
-		appliedFont = "Arial";
+		appliedFont = "DTLProkyonST	Bold";
 		kerningMethod : "Metrics";
-		tracking  = 100; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		tracking = 100; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
 		capitalization = Capitalization.ALL_CAPS;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = true;
+		gridAlignFirstLineOnly = false;			
+		justification = Justification.CENTER_ALIGN; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}
+		
+}
+//Überschrift
+function editParStyleH2(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("h2")
+	with(theStyle){
+		pointSize = 9;
+		leading = 11.5;
+		appliedFont = "DTLProkyonST	Bold";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = true;
+		gridAlignFirstLineOnly = false;			
+		justification = Justification.CENTER_ALIGN; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}		
+}
+//Zwischenüberschrift
+function editParStyleH3(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("h3")
+	with(theStyle){
+		pointSize = 9;
+		leading = 11.5;
+		appliedFont = "DTLProkyonTCaps	Regular";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = true;
+		gridAlignFirstLineOnly = false;			
+		justification = Justification.LEFT_JUSTIFIED; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}
+		
+}
+//Zitat
+function editParStyleH4(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("h4")
+	with(theStyle){
+		pointSize = 9;
+		leading = 11.5;
+		tracking = 0;
+		firstLineIndent = 3;
+		appliedFont = "Skolar	Italic";
+		kerningMethod : "Metrics";
+		tracking  = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
 		position = Position.NORMAL; // The text position relative to the baseline.
 		Underline = false;
 		strikeThru = false;
@@ -194,17 +419,470 @@ function editParStyleH1(){
 	}
 		
 }
+//Bildunterschrift
+function editParStyleH5(){
 
-
-function editPCharStyleStrong(){
+	var theStyle = app.activeDocument.paragraphStyles.item("h5")
+	with(theStyle){
+		pointSize = 7;
+		leading = 10;
+		tracking = 0;
+		leftIndent = 3;
+		firstLineIndent = -3;
+		appliedFont = "Skolar	SemiBold";
+		kerningMethod : "Metrics";
+		tracking  = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
 	
+		alignToBaseline = false;
+		gridAlignFirstLineOnly = true;			
+		justification = Justification.LEFT_JUSTIFIED; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}
+		
+}
+//Fließtext
+function editParStyleBody(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("body")
+	with(theStyle){
+		pointSize = 9;
+		leading = 11.5;
+		appliedFont = "Skolar	Regular";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		firstLineIndent = 3;
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = true;
+		gridAlignFirstLineOnly = false;			
+		justification = Justification.LEFT_JUSTIFIED; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}		
+}
+//footnote
+function editParStyleFootnote(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("footnote")
+	with(theStyle){
+		pointSize = 7;
+		leading = 10;
+		appliedFont = "Skolar	Regular";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = false;
+		gridAlignFirstLineOnly = true;			
+		justification = Justification.LEFT_JUSTIFIED; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}		
+}
+//endnote
+function editParStyleEndnote(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("endnote")
+	with(theStyle){
+		pointSize = 7;
+		leading = 10;
+		appliedFont = "Skolar	Regular";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = false;
+		gridAlignFirstLineOnly = true;			
+		justification = Justification.LEFT_JUSTIFIED; //1667591796;
+		balanceRaggedLines  = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}		
+}
+
+//Seitenzahl
+function editParStylePagina(){
+
+	var theStyle = app.activeDocument.paragraphStyles.item("pagina")
+	with(theStyle){
+		pointSize = 8;
+		leading = 11.5;
+		appliedFont = "DTLProkyonTCaps	Regular";
+		kerningMethod : "Metrics";
+		tracking = 0; //The amount by which to loosen or tighten a block of text, specified in thousands of an em.
+		firstLineIndent = 0;
+		capitalization = Capitalization.NORMAL;
+		position = Position.NORMAL; // The text position relative to the baseline.
+		Underline = false;
+		strikeThru = false;
+		ligatures =  true;
+		noBreak =  false;
+		
+		appliedLanguage : "de_DE_2006";
+		
+	
+		alignToBaseline = true;
+		gridAlignFirstLineOnly = false;			
+		balanceRaggedLines = false;
+
+		
+		hyphenation = true;
+		hyphenateWordsLongerThan = 5;
+		hyphenateAfterFirst = 2;
+		hyphenateBeforeLast = 2;
+		hyphenateLadderLimit = 3;
+		hyphenationZone  = "12.7mm";
+		hyphenWeight  = 5;
+		hyphenateCapitalizedWords = true;
+		hyphenateLastWord = true;
+
+		maximumWordSpacing  = 133; // (Range: 0 to 1000)
+		minimumWordSpacing  =  80; // (Range: 0 to 1000)
+		desiredWordSpacing  = 100; // (Range: 0 to 1000)
+
+		maximumLetterSpacing  = 0; // (Range: -100 to 500) 
+		minimumLetterSpacing  =  0; //(Range: -100 to 500) 
+		desiredLetterSpacing  = 0; //(Range: -100 to 500) 
+
+		maximumGlyphScaling  = 100; // (Range: 50 to 200)
+		minimumGlyphScaling  =  100; //(Range: 50 to 200)
+		desiredGlyphScaling  = 100; //(Range: 50 to 200)
+
+		autoLeading =  120; //(Range: 0 to 500)
+
+		singleWordJustification  = SingleWordJustification.FULLY_JUSTIFIED;
+		composer: "Adobe-Absatzsetzer";
+		
+		dropCapCharacters = 0;// (range: 0 - 150) The number of characters to drop cap.
+		dropCapLines = 0; // (range: 0 - 25) The number of lines to drop cap.
+//				dropCapStyle = myDocument.charcterStyles.item(0);
+//				nestedStyles = 0; // A collection of nested styles
+
+		fillColor = app.activeDocument.swatches.item("Black"); // Schwarz/Black
+		fillTint  = 100; 
+		overprintFill = false;
+		strokeWeight = "1pt";
+		strokeColor =  app.activeDocument.swatches.item("None");
+		strokeTint = 100;
+		overprintStroke  = false;
+		
+		underline = false;
+		strikeThru = false;
+	}		
+
+}
+//fett
+function editPCharStyleStrong(){
 	
 	var theStyle =app.activeDocument.characterStyles.item("strong") 
 		with(theStyle){
 
-			pointSize = 7;
-			leading = 10;
-			appliedFont = "Arial Black";
+			pointSize = 9;
+			leading = 11,5;
+			appliedFont = "Skolar	SemiBold";
+//			kerningMethod : "Metrics";
+//			capitalization = Capitalization.ALL_CAPS;
+//			position = Position.NORMAL; // The text position relative to the baseline.
+//			Underline = false;
+//			strikeThru = false;
+//			ligatures =  true;
+//			noBreak =  false;
+
+			appliedLanguage : "de_DE_2006";
+
+			//fillColor = myFillColor; // Schwarz/Black
+			fillTint  = 100; 
+			overprintFill = false;
+			strokeWeight = "1pt";
+			//strokeColor =  myStrokeColor;
+			strokeTint = 100;
+			overprintStroke  = false;
+
+			underline = false;
+			strikeThru = false;
+
+			}
+}
+//kursiv
+function editPCharStyleEm(){
+	
+	var theStyle =app.activeDocument.characterStyles.item("em") 
+		with(theStyle){
+
+			pointSize = 9;
+			leading = 11,5;
+			appliedFont = "Skolar	Italic";
+//			kerningMethod : "Metrics";
+//			capitalization = Capitalization.ALL_CAPS;
+//			position = Position.NORMAL; // The text position relative to the baseline.
+//			Underline = false;
+//			strikeThru = false;
+//			ligatures =  true;
+//			noBreak =  false;
+
+			appliedLanguage : "de_DE_2006";
+
+			//fillColor = myFillColor; // Schwarz/Black
+			fillTint  = 100; 
+			overprintFill = false;
+			strokeWeight = "1pt";
+			//strokeColor =  myStrokeColor;
+			strokeTint = 100;
+			overprintStroke  = false;
+
+			underline = false;
+			strikeThru = false;
+
+			}
+}
+//Fußnote im Text
+function editPCharStylefootnote_inText(){
+	
+	var theStyle =app.activeDocument.characterStyles.item("footnote_inText") 
+		with(theStyle){
+
+			pointSize = 5.5;
+			leading = 9;
+			appliedFont = "Skolar	Regular";
+			baselineShift = 2.5;
+//			kerningMethod : "Metrics";
+//			capitalization = Capitalization.ALL_CAPS;
+//			position = Position.NORMAL; // The text position relative to the baseline.
+//			Underline = false;
+//			strikeThru = false;
+//			ligatures =  true;
+//			noBreak =  false;
+
+			appliedLanguage : "de_DE_2006";
+
+			//fillColor = myFillColor; // Schwarz/Black
+			fillTint  = 100; 
+			overprintFill = false;
+			strokeWeight = "1pt";
+			//strokeColor =  myStrokeColor;
+			strokeTint = 100;
+			overprintStroke  = false;
+
+			underline = false;
+			strikeThru = false;
+
+			}
+}
+//Endnote im Text
+function editPCharStyleendnote_inText(){
+	
+	var theStyle =app.activeDocument.characterStyles.item("endnote_inText") 
+		with(theStyle){
+
+			pointSize = 5.5;
+			leading = 9;
+			appliedFont = "Skolar	Regular";
+			baselineShift = 2.5;
 //			kerningMethod : "Metrics";
 //			capitalization = Capitalization.ALL_CAPS;
 //			position = Position.NORMAL; // The text position relative to the baseline.

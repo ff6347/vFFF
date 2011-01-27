@@ -1,8 +1,9 @@
 #include "glue code.jsx";
 #include "findChange.jsx";
 #include "doc.jsx";
-main();
-function main(){
+#include "footnote.jsx";
+run();
+function run(){
 	var doc;
 	var p;
 	var font1;
@@ -50,12 +51,13 @@ function main(){
 	findTags(doc);
 	//this is experimental
 	//findIMG(doc);
-	findNotes(doc);
-	
+//	findNotes(doc);
+	buildFootnotes(doc,theFrame.parentStory);
 	//this should be the last find/change
 	takeOutTheTrash(doc);
 	takeOutTheTrash(doc);
 	theFrame.associatedXMLElement.untag();
+//	CleanWordHTML(theFrame.parentStory.contents);
 	//this comes from 
 	//untagAllxmlElements(doc);
 	doc.xmlElements.item(0).remove();
