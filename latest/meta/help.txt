@@ -1,25 +1,34 @@
 This Script is for importing .xml files created with Wordpress
 
+******************
 THE LIST
 
 Number Column:
 
 - check Marker
-	The Check marker indicates which items will be processed when hitting "Process List"
+The Check marker indicates which items will be processed when hitting "Process List"
+
 - white Marker
-	This indicates that an item has not been processed yet (since the start of the script)
-	These items are not in the layout
+This indicates that an item has not been processed yet (since the start of the script)
+These items are not in the layout
+
 - red Marker
-	This indicates that a list was already processed by hitting "Process List" but was not checked in
-	These items are not in the layout
+This indicates that a list was already processed by hitting "Process List" but was not checked in
+These items are not in the layout
+
 - green Marker
-	This indicates that an item was processed to the layout by hitting "Process List"
+This indicates that an item was processed to the layout by hitting "Process List"
+
 - alert Marker
-	This indicates that an item was processed TWICE or more times to the layout by hitting "Process List"
+This indicates that an item was processed TWICE or more times to the layout by hitting "Process List"
+
+
 
 Title Column:
 The Title column holds the Title from the wordpress text to process
 
+
+********************
 THE FUNCTIONS
 
 Move Item Up:
