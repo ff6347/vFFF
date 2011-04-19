@@ -58,13 +58,9 @@ or
 In InDesign  
 --  
 
-- now **execute the script:** _"/vFFF/slim/import.jsx"_  
-- the script will ask to **build a doc** or use a working one  
-- then it **asks for a font** with a pulldown  
-- then it **asks for the wordpress.xml** file you downloaded  
+- now **execute the script:** _"/vFFF/latest/RUN.jsx"_  
+- read the "Help?" from within the script
 - within the package is a folder called "xml" there is a basic .xml file provided  
-- then it ask you to** select a post** from the xml  
-- now it runs  
 - everything that could be parsed into InDesign character and paragraph syles is parsed  
 
 TODO  
@@ -73,6 +69,9 @@ Create a document sampler to take par char obj styles from a existing doc
 
 LOG  
 -- 
+**Tue Apr 19 13:23:58 CEST 2011** Build a new UserInterface
+folder extended was zipped to importer_v01.zip and removed
+
 **Mon Jan 24 14:15:16 CET 2011** added styles_editor.jsx for OO
  
 **Thu Jan  6 20:59:27 CET 2011** added how to  

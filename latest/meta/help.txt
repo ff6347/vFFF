@@ -1,0 +1,59 @@
+This Script is for importing .xml files created with Wordpress
+
+THE LIST
+
+Number Column:
+
+- check Marker
+	The Check marker indicates which items will be processed when hitting "Process List"
+- white Marker
+	This indicates that an item has not been processed yet (since the start of the script)
+	These items are not in the layout
+- red Marker
+	This indicates that a list was already processed by hitting "Process List" but was not checked in
+	These items are not in the layout
+- green Marker
+	This indicates that an item was processed to the layout by hitting "Process List"
+- alert Marker
+	This indicates that an item was processed TWICE or more times to the layout by hitting "Process List"
+
+Title Column:
+The Title column holds the Title from the wordpress text to process
+
+THE FUNCTIONS
+
+Move Item Up:
+This moves an item up in the list. Also the number and all markers get moved
+
+Move Item Down:
+This moves an item down in the list. Also the number and all markers get moved
+Reload List:
+Tis refreshes the Numbering in the List. WARNING the numbering is only for your sorting purpose.
+If you hit "Process List" the items will be processed in THE ORDER THEY HAVE AT THIS MOMENT IN THE LIST.
+
+Check Item I/O:
+This sets the "Check Marker" items which are checked out don't get processed when hitting "Process List"
+
+Help?:
+This opens this Help panel.
+You can find the text und /[SCRIPTS LOCATION]/meta/help.txt
+
+Load .xml File:
+This loads a new .xml file into the list. WARNING the old list gets removed and can't be restored
+
+Save .tsv File:
+Not implemeted yet. This will export a .tsv file (Tab separeted values) this can be read with open office or excel
+
+Build New Doc:
+This builds a new InDesign Document with all necessary Paragraph- and Character-Styles. 
+
+Process List:
+This calls the real importer. It processes the selected items and imports the .xml file you've loaded into InDesign and places all selected elements into the layout. All the formating happens here.
+
+Clear Structure:
+This clears the InDesign xml structure. You MUST clear the structure bevor you can use "Process List"
+
+Close Importer:
+Closes the whole importer and returns to InDesign all processed or not processed information gets lost.
+
+
