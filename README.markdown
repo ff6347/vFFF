@@ -48,7 +48,7 @@ Install Scripts
 
 - place everything in the InDesign Scripts Folder following these [instructions](http://lmgtfy.com/?q=indesign+install+script)  
 
-Install Find CHange Queries  
+Install Find Change Queries  
 --
 On Mac under:
 /Applications/Adobe InDesign CS4/Presets/Find-Change Queries/GREP/de_DE/  
@@ -65,14 +65,22 @@ In InDesign
 
 TODO  
 --
-Create a document sampler to take par char obj styles from a existing doc
+Create a document sampler to take par char obj styles from a existing doc  
+Create some sort of session  
+Create pref panel for options  
+Create iconbuttons  
+Create multikill  
+Create book  
 
 LOG  
 -- 
-**Tue Apr 19 13:23:58 CEST 2011** Build a new UserInterface
-folder extended was zipped to importer_v01.zip and removed
 
-**Mon Jan 24 14:15:16 CET 2011** added styles_editor.jsx for OO
+**Tue Apr 26 07:08:49 CEST 2011** Reorganized Folder structure
+
+**Tue Apr 19 13:23:58 CEST 2011** Build a new UserInterface  
+folder extended was zipped to importer_v01.zip and removed  
+
+**Mon Jan 24 14:15:16 CET 2011** added styles_editor.jsx for OO  
  
 **Thu Jan  6 20:59:27 CET 2011** added how to  
   
