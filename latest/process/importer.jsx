@@ -38,13 +38,17 @@ function importer(aDoc,xmlRef,list){
 	//this is for making the textFrames like the pages margins
 	var likeColumns = false;
 	
-	var theFrame = placeByAttribute(doc,likeColumns,append,list);
-
-
-	theFrame.parentStory.appliedParagraphStyle = doc.paragraphStyles.item("body");
-	DumbRunPages(doc,theFrame.parentStory,likeColumns);
-
-
+	for(var i = 0; i < list.length; i++){
+		var id = list[i];
+		
+		var theFrame = placeByAttribute(doc,likeColumns,append,id);
+		theFrame.parentStory.appliedParagraphStyle = doc.paragraphStyles.item("body");
+		DumbRunPages(doc,theFrame.parentStory,likeColumns);
+		remove_empty_frames(doc);
+		
+		
+	}
+	remove_empty_pages(doc);
 	alert("Done");
 	
 	
@@ -55,7 +59,7 @@ function importer(aDoc,xmlRef,list){
 //param doc
 //returns
 //
-function placeByAttribute(doc,likeColumns,append,list) {
+function placeByAttribute(doc,likeColumns,append,id) {
 		
 		var p;
 		if(append == false){
@@ -72,41 +76,128 @@ function placeByAttribute(doc,likeColumns,append,list) {
 			txtFr.textFramePreferences.textColumnCount = p.marginPreferences.columnCount;   
 			txtFr.textFramePreferences.textColumnGutter = p.marginPreferences.columnGutter; 
 			}
-		buildText(doc,list);
-		//alert("injektin " + i_data.txt);
-		txtFr.contents = i_data.txt ;
-
-	
-	
-	return txtFr;
+			
+		txtFr.contents = "";
+		
+		var items = doc.xmlElements.item(0).xmlElements.everyItem();
+		for(var j = 0; j < doc.xmlElements.item(0).xmlElements.length; j++ ){
+			
+			var theItem = doc.xmlElements.item(0).xmlElements.item(j);
+			
+			var theName = theItem.xmlAttributes.item("id").value.toString();
+			if(id.match(theName)){
+			
+			txtFr.contents = theItem.xmlElements.item("content").contents;
+			}
+		}
+		
+		return txtFr;
 }
 
 
-function buildText(doc,list){
-	
-	for(var i = 0; i < list.length;i++){
-	var id = list[i];
-	i_data.txt = i_data.txt + "\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n";
-	var myRuleSet = new Array(new FindAndPlaceText(id));
-		with(doc){
-			var elements = xmlElements;
-			__processRuleSet(elements.item(0), myRuleSet);
-		}
-	
+function remove_empty_frames(doc){
+
+	var myStories = doc.stories.everyItem().getElements();
+	for (i = myStories.length - 1; i >= 0; i--){
+	    var myTextFrames = myStories[i].textContainers;
+	    for (j = myTextFrames.length - 1; j >= 0; j--)    {
+	        if (myTextFrames[j].contents == ""){
+	            myTextFrames[j].remove();
+	        }
+	    }
 	}
 	
+	// var inlines = doc.stories.everyItem().textFrames.everyItem().getElements();
+	// while(tf=inlines.pop()){
+	// 	if(tf.contents==""){tf.remove()}
+	// }
+}
 	
+	
+function remove_empty_pages(doc){
+
+	var pag=doc.pages;
+	for(var i=pag.length-1; i>=0; i--){
+	    if(pag[i].pageItems.length==0 && pag[i].guides.length==0){
+	        pag[i].remove();
+	        }
+	    }
+	
+}	
+
+function buildText(doc,list){
+	//alert("i m here");
+	var txt = "";
+	for(var i = 0; i < list.length;i++){
+	var id = list[i];
+	alert(id);
+	//i_data.txt = i_data.txt + "\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n"+i +"\n";
+	var rootNode = doc.xmlElements.firstItem();
+   	//Call function traversXmlElements
+   	txt = txt + traverseXmlElements(rootNode,id);
+
+	//alert(txt);
+	
+	//txtFr.contents = txtFr.contents + txt;
+	// var myRuleSet = new Array(new FindAndPlaceText(id,txtFr));
+	// 	with(doc){
+	// 		var elements = xmlElements;
+	// 		__processRuleSet(elements.item(0), myRuleSet);
+	// 	}
+	
+	}
+	alert(txt + " in buildText()");
+	return txt;
 }
 
-function FindAndPlaceText(id){
+//Function alerts for each xml element name and text content
+//when xml element has attributes the function show Attributes will be called
+//when xml element has child nodes the function traverseXmlElements is called again
+
+
+function traverseXmlElements(xmlNode,id){
+	var txt = "";
+   for(var i=0; i<xmlNode.xmlElements.length; i++){
+      var actualNode = xmlNode.xmlElements[i];
+     // alert("Element Name is: " + actualNode.markupTag.name);
+     // alert("Element text: " +  actualNode.contents);
+      if(actualNode.xmlAttributes.length != 0){
+         txt = showAttributes(actualNode,id);
+      }
+      if(actualNode.xmlElements.length != 0){
+         traverseXmlElements(actualNode,id);
+      }
+   }
+	return txt;
+}
+
+//Function alerts the name and value of each attribute
+function showAttributes(xmlNode,id){
+	var txt = "";
+      var attribute = xmlNode.xmlAttributes[0];
+	var theName = attribute.value.toString();
+		if(id.match(theName)){
+			txt =  xmlNode.contents;
+		//alert("Attribute name: "+ attribute.name);
+		//alert("Attribute value: "+ attribute.value);
+		}else{
+			
+		txt = "";
+		}
+	
+	return txt;
+}
+
+function FindAndPlaceText(id,txtFr){
     this.name = "FindAndPlaceText";
     this.xpath = "/rss/item/content[@id ='"+id.toString()+"']";	
-	alert(this.name + " is processing "+id +" with this xPath "+this.xpath);
+//	alert(this.name + " is processing "+id +" with this xPath "+this.xpath);
     this.apply = function(XML_e, myRuleProcessor){
 
 			//txtFr.placeXML(XML_e.xmlElements.item("content:encoded"));
-			//alert(XML_e.contents);
-			i_data.txt = i_data.txt + XML_e.contents;
+			
+			txtFr.contents = txtFr.contents + XML_e.contents;
+		//	i_data.txt = i_data.txt + XML_e.contents;
 	        //XML_e.xmlElements.item(0).texts.item(0).fillColor = app.documents.item(0).swatches.item(-1);
 	        return true;
 		
