@@ -18,6 +18,8 @@ function emptyFC(){
 	
 }
 
+
+
 function findNotes(doc){
 	setFCopt();
 	var findGrepPref  = app.findGrepPreferences;
